@@ -18,7 +18,7 @@ namespace ONIPlannerControl {
 
         #region Accessors
 
-        public ONIPlannerSubControl[,] CellGrid { get { return cellGrid; } protected set { cellGrid = value; ReformatCellGrid((uint)value.GetLength(0), (uint)value.GetLength(1), true); } }
+        public ONIPlannerSubControl[,] CellGrid { get { return cellGrid; } protected set { cellGrid = value; ReformatCellGrid((UInt16)value.GetLength(0), (UInt16)value.GetLength(1), true); } }
         public Point ActiveCellCoordinates { get { return activeCellCoordinates; } protected set { if (value.X < CellGrid.GetLength(0) && value.Y < CellGrid.GetLength(1)) { activeCellCoordinates = value; } } }
 
         #endregion
@@ -26,8 +26,20 @@ namespace ONIPlannerControl {
 
         #region Interpreters 
 
-        public uint CellGridWidth { get { return (uint)CellGrid.GetLength(0); } set { ReformatCellGrid(value, (uint)CellGrid.GetLength(1), false); } }
-        public uint CellGridHeight { get { return (uint)CellGrid.GetLength(1); } set { ReformatCellGrid((uint)CellGrid.GetLength(0), value, false); } }
+        public UInt16 CellGridWidth { get { return (UInt16)CellGrid.GetLength(0); } set { ReformatCellGrid(value, (UInt16)CellGrid.GetLength(1), false); } }
+        public UInt16 CellGridHeight { get { return (UInt16)CellGrid.GetLength(1); } set { ReformatCellGrid((UInt16)CellGrid.GetLength(0), value, false); } }
+
+        public ONIPlannerSubControl GetCellAt(UInt16 x, UInt16 y) {
+            if(x > CellGrid.GetLength(0)) {
+                throw new ArgumentOutOfRangeException("X", x, "X value given is higher than the number of columns!");
+            }
+
+            if (y > CellGrid.GetLength(1)) {
+                throw new ArgumentOutOfRangeException("Y", y, "Y value given is higher than the number of rows!");
+            }
+
+            return CellGrid[x, y];
+        }
 
         #endregion
 
@@ -39,8 +51,41 @@ namespace ONIPlannerControl {
 
         #region Methods
 
-        public void ReformatCellGrid(uint newWidth, uint newHeight, bool forceRedrawAfterwards) {
-            
+        public void ReformatCellGrid(UInt16 newWidth, UInt16 newHeight, bool forceRedraw) {
+            ONIPlannerSubControl[,] newGrid = new ONIPlannerSubControl[newWidth, newHeight];
+
+            if (newWidth == CellGrid.GetLength(0) && newHeight == CellGrid.GetLength(1)) {
+                return;
+            }
+
+            if (CellGrid == null) {
+                newGrid.Initialize();
+            }
+
+            else {
+                for (int x = 0; x < newWidth; x++) {
+                    for (int y = 0; y < newHeight; y++) {
+                        if (CellGrid.GetLength(0) > newWidth || CellGrid.GetLength(1) > newHeight) {
+                             newGrid[x, y] = new ONIPlannerSubControl();
+                        }
+
+                        else {
+                            newGrid[x, y] = CellGrid[x, y];
+                        }
+                    }
+                }
+            }
+
+            CellGrid = newGrid;
+
+            if (forceRedraw) {
+                for (int x = 0; x < newWidth; x++) {
+                    for (int y = 0; y < newHeight; y++) {
+                        CellGrid[x, y].NeedsRedraw = true;
+                        CellGrid[x, y].Refresh();
+                    }
+                }
+            }
         }
 
         #endregion

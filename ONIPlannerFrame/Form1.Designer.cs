@@ -46,7 +46,7 @@
             this.oniPlannerSubControl1.Location = new System.Drawing.Point(85, 80);
             this.oniPlannerSubControl1.Name = "oniPlannerSubControl1";
             this.oniPlannerSubControl1.NeedsRedraw = false;
-            this.oniPlannerSubControl1.OriginalImage = global::ONIPlannerFrame.Properties.Resources.ljunction;
+            this.oniPlannerSubControl1.OriginalImage = null;
             this.oniPlannerSubControl1.OriginalImageRotation = System.Drawing.RotateFlipType.Rotate90FlipXY;
             this.oniPlannerSubControl1.SelectedBorderColour = System.Drawing.Color.DarkSeaGreen;
             this.oniPlannerSubControl1.Size = new System.Drawing.Size(103, 103);
