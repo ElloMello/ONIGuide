@@ -105,7 +105,7 @@ namespace ONIPlannerControl {
         [Browsable(true)]
         [Category("Planner Cell")]
         [Description("The rotation transformation for the original image.")]
-        public RotateFlipType OriginalImageRotation { get { return originalImageRotation; } set { rotatedImage = originalImage; if (rotatedImage != null) { rotatedImage.RotateFlip(value); } originalImageRotation = value; } }
+        public RotateFlipType OriginalImageRotation { get { return originalImageRotation; } set { if (rotatedImage != null) { rotatedImage = (Image)originalImage.Clone(); rotatedImage.RotateFlip(value); } else { rotatedImage = null; } originalImageRotation = value; } }
 
         [Browsable(true)]
         [Category("Planner Cell")]

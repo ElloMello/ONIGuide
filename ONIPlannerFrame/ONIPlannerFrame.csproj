@@ -91,5 +91,8 @@
   <ItemGroup>
     <None Include="Resources\xjunction.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ljunction.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

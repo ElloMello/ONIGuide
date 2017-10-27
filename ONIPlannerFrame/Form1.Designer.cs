@@ -33,7 +33,7 @@
             // 
             // oniPlannerSubControl1
             // 
-            this.oniPlannerSubControl1.CellSize = ((uint)(235u));
+            this.oniPlannerSubControl1.CellSize = ((uint)(103u));
             this.oniPlannerSubControl1.DefaultBorderColour = System.Drawing.Color.Orange;
             this.oniPlannerSubControl1.Draws = true;
             this.oniPlannerSubControl1.DrawsBottom = true;
@@ -43,13 +43,13 @@
             this.oniPlannerSubControl1.DrawsTop = true;
             this.oniPlannerSubControl1.ForceScaling = true;
             this.oniPlannerSubControl1.HoveredBorderColour = System.Drawing.Color.SeaGreen;
-            this.oniPlannerSubControl1.Location = new System.Drawing.Point(12, 12);
+            this.oniPlannerSubControl1.Location = new System.Drawing.Point(85, 80);
             this.oniPlannerSubControl1.Name = "oniPlannerSubControl1";
             this.oniPlannerSubControl1.NeedsRedraw = false;
-            this.oniPlannerSubControl1.OriginalImage = null;
-            this.oniPlannerSubControl1.OriginalImageRotation = System.Drawing.RotateFlipType.RotateNoneFlipNone;
+            this.oniPlannerSubControl1.OriginalImage = global::ONIPlannerFrame.Properties.Resources.ljunction;
+            this.oniPlannerSubControl1.OriginalImageRotation = System.Drawing.RotateFlipType.Rotate90FlipXY;
             this.oniPlannerSubControl1.SelectedBorderColour = System.Drawing.Color.DarkSeaGreen;
-            this.oniPlannerSubControl1.Size = new System.Drawing.Size(235, 235);
+            this.oniPlannerSubControl1.Size = new System.Drawing.Size(103, 103);
             this.oniPlannerSubControl1.TabIndex = 0;
             // 
             // Form1
